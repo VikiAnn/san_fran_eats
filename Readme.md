@@ -10,9 +10,16 @@ Run `npm start`
 
 Run `npm run test`
 
+### Current functionality:
+
+`/` root url serves up a string expressing the intent of the app
+`/food_trucks` index page returning a list of food truck data as JSON
+
 ### To do:
 
-- Set up asset bundling properly so that `npm run serve` works (currently static files like images aren't being copied over to the `dist` outDir)
+- Set up templates, layouts, etc (decide on templating framework)
 - Add MapBox map
 - Render food truck locations on the map
-- Add more tests (maybe e2e/outside-in cypress tests in addition to unit tests)
+- Persist food truck data to a database and use the CSV to seed
+- Add more tests (maybe e2e/outside-in cypress or other tests in addition to unit tests)
+- Set up asset bundling properly so that `npm run serve` works (currently static files like images aren't being copied over to the `dist` outDir)
