@@ -1,4 +1,4 @@
-import { FoodTruck } from "../models/food_truck";
+import { FoodTruck } from "./interface";
 import * as fs from "fs";
 import * as path from "path";
 import csv from "csv-parser";

@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { FoodTrucks } from "../data/food_trucks";
+import { FoodTrucks } from "../models/food_truck/repo";
 
 const router = Router();
 

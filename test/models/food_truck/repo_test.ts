@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { FoodTrucks } from "../../src/data/food_trucks";
+import { FoodTrucks } from "../../../src/models/food_truck/repo";
 
 describe("Food trucks data", () => {
   it("should be parsed from a given CSV", async () => {
-    const foodTrucks = await FoodTrucks(__dirname, "food_trucks.csv");
+    const foodTrucks = await FoodTrucks("test/data", "food_trucks.csv");
     const firstTruck = foodTrucks[0];
 
     const expectedFirstTruck = {
