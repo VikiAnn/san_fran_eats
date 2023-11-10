@@ -2,9 +2,10 @@ import { FoodTruck } from "../models/food_truck";
 import * as fs from "fs";
 import * as path from "path";
 import csv from "csv-parser";
+import { finished } from "node:stream/promises";
 
-export const FoodTrucks = (() => {
-  const filePath = path.resolve(__dirname, "food_trucks.csv");
+export const FoodTrucks = async (dirname: string, filename: string) => {
+  const filePath = path.resolve(dirname, `../data/${filename}`);
   const headers = {
     address: "Address",
     name: "Applicant",
@@ -19,7 +20,8 @@ export const FoodTrucks = (() => {
   };
 
   const food_trucks: FoodTruck[] = [];
-  fs.createReadStream(filePath)
+  const foodTruckStream = fs
+    .createReadStream(filePath)
     .pipe(csv())
     .on("data", (data) => {
       const row = {
@@ -39,5 +41,7 @@ export const FoodTrucks = (() => {
     .on("error", (error: Error) => console.error("something blew up!", error))
     .on("end", () => console.log("Food truck parsing complete"));
 
+  await finished(foodTruckStream);
+
   return food_trucks;
-})();
+};
