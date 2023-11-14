@@ -1,22 +1,11 @@
-import express, { Request, Response } from "express";
-import favicon from "serve-favicon";
-import path from "path";
-import foodTruckRoutes from "./routes/food_trucks";
+import './pre-start';
+import logger from 'jet-logger';
 
-const app = express();
-const port = process.env.PORT || 3000;
+import EnvVars from '@src/constants/EnvVars';
+import server from './server';
 
-app.use(favicon(path.join(__dirname, "images", "favicon.ico")));
+// **** Run **** //
+const SERVER_START_MSG =
+  'Express server running at http://localhost:' + EnvVars.Port.toString();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send(
-    "This will be SanFranEats, serving up data sourced from the DataSF Open Data collection"
-  );
-});
-
-app.use(express.json());
-app.use("/food_trucks", foodTruckRoutes);
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG));

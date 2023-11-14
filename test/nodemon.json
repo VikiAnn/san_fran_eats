@@ -1,0 +1,6 @@
+{
+  "watch": ["test"],
+  "ext": ".ts",
+  "ignore": ["test/data"],
+  "exec": "node --test --require ts-node/register test/**/*.ts"
+}

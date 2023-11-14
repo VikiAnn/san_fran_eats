@@ -1,17 +1,27 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "nodenext",
+        "target": "es6",
+        "module": "commonjs",
         "strict": true,
         "skipLibCheck": true,
         "outDir": "dist",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "@src/*": [
+                "src/*"
+            ]
+        },
+        "useUnknownInCatchVariables": false
     },
     "include": [
-        "src/**/*",
-        "tests/**/*"
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "build.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/public"
     ]
 }
